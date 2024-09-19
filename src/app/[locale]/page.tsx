@@ -1,7 +1,11 @@
 import Body from "../components/Body";
+import Footer from "@/components/Fooder";
 
 export default function Home() {
   return (
-  <Body/>
+    <div>
+      <Body />
+      <Footer />
+    </div>
   );
 }
