@@ -31,7 +31,6 @@ const Header = () => {
       position="sticky"
       top="0"
       zIndex="1000"
-      // Apply shadow only when scrolled
       boxShadow={isScrolled ? '0 8px 12px rgba(0, 0, 0, 0.1)' : 'none'}
       backdropFilter="blur(10px)"
       transition="box-shadow 0.3s ease"
