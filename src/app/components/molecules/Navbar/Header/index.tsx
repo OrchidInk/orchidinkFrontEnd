@@ -1,8 +1,9 @@
 'use client'
-import { Box, Flex, Link, Text, Input, Select, IconButton, Badge, Spacer } from '@chakra-ui/react';
+import { Box, Flex,  Text, Input, Select, IconButton, Badge } from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
 import { FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
+
 
 const Header = () => {
   const t = useTranslations('Index');
