@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
 
+
 const Header = () => {
   const t = useTranslations('Index');
   const [isScrolled, setIsScrolled] = useState(false);
