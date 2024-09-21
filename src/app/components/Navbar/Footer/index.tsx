@@ -12,7 +12,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
-import Image from '../Image';
+import Image from '../../Image';
 
 
 interface IconItem {
@@ -58,7 +58,7 @@ const Footer: FC = () => {
       <Container maxW="container.xl">
         <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap={6}>
           <GridItem>
-            <Link href="/">
+            <Link href="/" passHref>
               <Image mb={4} height={120} src="/public/assets/images/uba_logo_white.png" alt="logo" />
             </Link>
             <Text mb={4} color="gray.500">
@@ -83,7 +83,7 @@ const Footer: FC = () => {
             {aboutLinks.map((item, index) => (
               <Box key={index} mb={2}>
                 <Link href="/" passHref>
-                  <Text as="a" color={linkColor} _hover={{ color: linkHoverColor }}>
+                  <Text color={linkColor} _hover={{ color: linkHoverColor }}>
                     {item}
                   </Text>
                 </Link>
@@ -98,7 +98,7 @@ const Footer: FC = () => {
             {customerCareLinks.map((item, index) => (
               <Box key={index} mb={2}>
                 <Link href="/" passHref>
-                  <Text as="a" color={linkColor} _hover={{ color: linkHoverColor }}>
+                  <Text color={linkColor} _hover={{ color: linkHoverColor }}>
                     {item}
                   </Text>
                 </Link>
@@ -113,7 +113,7 @@ const Footer: FC = () => {
             {['Брендүүд', 'Хүргэлт', 'Буцаалт', 'Түгээмэл асуулт хариулт'].map((item, index) => (
               <Box key={index} mb={2}>
                 <Link href="/" passHref>
-                  <Text as="a" color={linkColor} _hover={{ color: linkHoverColor }}>
+                  <Text color={linkColor} _hover={{ color: linkHoverColor }}>
                     {item}
                   </Text>
                 </Link>
