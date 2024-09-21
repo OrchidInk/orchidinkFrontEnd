@@ -1,14 +1,84 @@
-import { Box, Flex, Link, Text } from '@chakra-ui/react';
+import { Box, Flex, Link, Text, Input, Select, IconButton, Badge, Spacer } from '@chakra-ui/react';
+import { useTranslations } from 'next-intl';
+import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
 
 const Header = () => {
+  const t = useTranslations('Index')
   return (
-    <Box as="header" bg="blue.500" color="white" py={4}>
-      <Flex justify="space-between" align="center" maxW="container.xl" mx="auto" px={4}>
-        <Text fontSize="xl" fontWeight="bold">Logo</Text>
-        <Flex gap={4}>
-          <Link href="/" _hover={{ textDecoration: 'none', color: 'gray.300' }}>Home</Link>
-          <Link href="/about" _hover={{ textDecoration: 'none', color: 'gray.300' }}>About</Link>
-          <Link href="/contact" _hover={{ textDecoration: 'none', color: 'gray.300' }}>Contact</Link>
+    <Box as="header" bg="white" color="gray.800" boxShadow="sm">
+      {/* Main navigation */}
+      <Flex
+        justify="space-between"
+        align="center"
+        maxW="container.xl"
+        mx="auto"
+        px={4}
+        py={4}
+      >
+        {/* Left side - Logo and Categories */}
+        <Flex align="center">
+          {/* Logo */}
+          <Box mr={6}>
+            <Text fontSize="2xl" fontWeight="bold" color="gray.800">orchid</Text>
+          </Box>
+        </Flex>
+
+        {/* Center - Search bar */}
+        <Flex flex="1" maxW="500px" mx={4} bg="gray.50" borderRadius="md" align="center">
+          <IconButton
+            aria-label="Search"
+            icon={<FiSearch />}
+            bg="transparent"
+            _hover={{ bg: "transparent" }}
+            color="gray.500"
+          />
+          <Input
+            placeholder={t('Search')}
+            variant="unstyled"
+            px={2}
+            color="gray.800"
+          />
+          <Select variant="unstyled" maxW="150px" placeholder="All Categories" textColor="gray.600">
+            <option value="option1">Electronics</option>
+            <option value="option2">Fashion</option>
+            <option value="option3">Home Appliances</option>
+          </Select>
+        </Flex>
+
+        {/* Right side - Navigation and Icons */}
+        <Flex align="center">
+          {/* User and Cart Icons */}
+          <Flex align="center" gap={4}>
+            <IconButton
+              aria-label="User Account"
+              icon={<FiUser />}
+              variant="ghost"
+              color="gray.600"
+              _hover={{ color: 'gray.800' }}
+            />
+            <Box position="relative">
+              <IconButton
+                aria-label="Shopping Cart"
+                icon={<FiShoppingCart />}
+                variant="ghost"
+                color="gray.600"
+                _hover={{ color: 'gray.800' }}
+              />
+              <Badge
+                position="absolute"
+                top="-1"
+                right="-1"
+                bg="red.500"
+                color="white"
+                borderRadius="full"
+                px={2}
+                fontSize="xs"
+              >
+                3
+              </Badge>
+            </Box>
+          </Flex>
         </Flex>
       </Flex>
     </Box>
