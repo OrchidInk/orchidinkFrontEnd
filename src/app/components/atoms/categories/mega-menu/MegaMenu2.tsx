@@ -1,6 +1,6 @@
 import { useEffect, ReactNode } from "react";
 import StyledMegaMenu from "./StyledMegaMenu";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import CategoryMenuItem from "../CategoryMenuItem";
 
 interface MegaMenu2Props {

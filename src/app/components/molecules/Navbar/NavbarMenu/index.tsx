@@ -2,7 +2,6 @@
 import {
   Box,
   Button,
-  Container,
   MenuItem,
   BoxProps,
 } from "@chakra-ui/react";
@@ -21,14 +20,14 @@ import CategoryMenu from "@/components/atoms/categories/CategoryMenu";
 import MegaMenu from "./MegaMenu";
 import MegaMenu2 from "./MegaMenu2";
 import { useSettings } from "@/hooks/useSettings";
-import { useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl';
 
 interface NavbarMenuProps {
-  navListOpen: boolean;
-  hideCategories: boolean;
-  elevation: number;
-  border: boolean;
-  categoryData: any;
+  navListOpen?: boolean;
+  hideCategories?: boolean;
+  elevation?: number;
+  border?: boolean;
+  categoryData?: any;
 }
 
 const navLinkStyle = {
@@ -37,7 +36,7 @@ const navLinkStyle = {
   _hover: {
     color: "blue.500",
   },
-  "&:last-child": {
+  "&:lastChild": {
     marginRight: 0,
   },
 };
@@ -76,7 +75,6 @@ const ParentNavItem = ({ children }: { children: React.ReactNode }) => (
 
 const NavBarMenuWrapper = ({
   children,
-  border,
 }: {
   children: React.ReactNode;
   border: boolean;
@@ -100,8 +98,6 @@ const InnerContainer = ({ children, ...props }: BoxProps & { children: React.Rea
     {children}
   </Box>
 );
-
-
 
 const CategoryMenuButton = () => {
   const t = useTranslations('Index');
@@ -139,10 +135,9 @@ const ChildNavsWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 const NavbarMenu: React.FC<NavbarMenuProps> = ({
-  navListOpen,
-  hideCategories,
-  elevation,
-  border,
+  navListOpen = false,
+  hideCategories = false,
+  border = true,
   categoryData,
 }) => {
   const { settings } = useSettings();
@@ -260,12 +255,6 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
       )}
     </NavBarMenuWrapper>
   );
-};
-
-NavbarMenu.defaultProps = {
-  elevation: 2,
-  navListOpen: false,
-  hideCategories: false,
 };
 
 export default NavbarMenu;

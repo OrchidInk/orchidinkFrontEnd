@@ -1,4 +1,3 @@
-import Footer from "@/components/molecules/Navbar/Footer";
 import Body from "@/components/molecules/Body/Body";
 
 export default function Home() {

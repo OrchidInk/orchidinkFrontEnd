@@ -1,15 +1,20 @@
-"use client"
+"use client";
 import { Box, chakra } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import CategoryMenuCard from "./CategoryMenuCard"; // Assuming this is your custom component
+import CategoryMenuCard from "./CategoryMenuCard";
+
+interface Category {
+  id: number;
+  name: string;
+  href: string;
+}
 
 interface CategoryMenuProps {
   open?: boolean;
-  categoryData: any[]; // Adjust type based on actual category data structure
+  categoryData: Category[];
   children: React.ReactElement;
 }
 
-// Styled component using Chakra UI's chakra() function
 const Wrapper = chakra(Box);
 
 const CategoryMenu: React.FC<CategoryMenuProps> = ({
@@ -18,7 +23,7 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({
   children,
 }) => {
   const [open, setOpen] = useState(isOpen);
-  const [varCategoryData, setVarCategoryData] = useState(categoryData);
+  const [varCategoryData, setVarCategoryData] = useState<Category[]>(categoryData);
 
   const popoverRef = useRef(open);
   popoverRef.current = open;
@@ -41,6 +46,11 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({
     setVarCategoryData(categoryData);
   }, [categoryData]);
 
+  const transformedCategoryData = varCategoryData.map((category) => ({
+    ...category,
+    href: category.href || `/categories/${category.id}`,
+  }));
+
   return (
     <Wrapper
       position="relative"
@@ -58,8 +68,7 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({
         className: `${children.props.className}`,
       })}
 
-      {/* CategoryMenuCard should accept Chakra UI props or styles */}
-      <CategoryMenuCard open={open} categoryData={varCategoryData} />
+      <CategoryMenuCard open={open} categoryData={transformedCategoryData} />
     </Wrapper>
   );
 };

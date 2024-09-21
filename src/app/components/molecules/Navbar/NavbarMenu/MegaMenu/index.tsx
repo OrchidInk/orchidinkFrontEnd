@@ -49,7 +49,6 @@ const gridSize = (length: number): number => {
 // MegaMenu Component
 const MegaMenu: React.FC<MegaMenuProps> = ({ title, menuList }) => {
   const theme = useTheme();
-  const grid = gridSize(menuList.length);
 
   // Chakra UI color mode sensitive hover styles
   const hoverColor = useColorModeValue("gray.100", "gray.700");

@@ -14,9 +14,13 @@ const Card: React.FC<CardProps> = ({
   ...rest
 }) => {
   return (
-    <div className={`w-full flex justify-between ${className}`}>
+    <Box
+      className={`w-full flex justify-between ${className}`}
+      {...rest}
+      _hover={hoverEffect ? { boxShadow: "lg" } : {}}
+    >
       {children}
-    </div>
+    </Box>
   );
 };
 
