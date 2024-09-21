@@ -1,10 +1,15 @@
 import NavbarLayout from '@/components/Navbar/layout';
 import React from 'react';
 
-const Body: React.FC = () => {
+interface BodyProps {
+  locale: string;
+}
+
+const Body: React.FC<BodyProps> = ({ locale }) => {
   return (
-    <NavbarLayout children={''}>
-      
+    <NavbarLayout>
+      {/* Render locale or use it in your content */}
+      <p>Current Locale: {locale}</p>
     </NavbarLayout>
   );
 };
