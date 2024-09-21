@@ -1,12 +1,41 @@
+'use client'
 import { Box, Flex, Link, Text, Input, Select, IconButton, Badge, Spacer } from '@chakra-ui/react';
 import { useTranslations } from 'next-intl';
-import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
-  const t = useTranslations('Index')
+  const t = useTranslations('Index');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <Box as="header" bg="white" color="gray.800" boxShadow="sm">
+    <Box
+      as="header"
+      bg="white"
+      color="gray.800"
+      position="sticky"
+      top="0"
+      zIndex="1000"
+      // Apply shadow only when scrolled
+      boxShadow={isScrolled ? '0 8px 12px rgba(0, 0, 0, 0.1)' : 'none'}
+      backdropFilter="blur(10px)"
+      transition="box-shadow 0.3s ease"
+    >
       {/* Main navigation */}
       <Flex
         justify="space-between"
