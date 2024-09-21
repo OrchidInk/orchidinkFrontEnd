@@ -1,6 +1,10 @@
 {
-    "Index": {
-        "Title": "Орчид",
-        "Search":"Хайх"
-    }
+  "Index": {
+    "Title": "Орчид",
+    "Search": "Хайх",
+    "Categories": "Ангилал",
+    "DiscountProducts": "Хямдралтай бараа",
+    "NewProducts": "Шинэ бараа",
+    "Home": "Нүүр хуудас"
+  }
 }

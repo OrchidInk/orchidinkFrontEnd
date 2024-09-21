@@ -12,7 +12,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
-import Image from '../../Image';
+import Image from "@/components/atoms/Image"
 
 
 interface IconItem {
