@@ -31,26 +31,25 @@ interface MegaMenuProps {
 }
 
 // Function to determine grid size
-const gridSize = (length: number): number => {
-  switch (length) {
-    case 1:
-      return 12;
-    case 2:
-      return 6;
-    case 3:
-      return 4;
-    case 4:
-      return 3;
-    default:
-      return 3;
-  }
-};
+// const gridSize = (length: number): number => {
+//   switch (length) {
+//     case 1:
+//       return 12;
+//     case 2:
+//       return 6;
+//     case 3:
+//       return 4;
+//     case 4:
+//       return 3;
+//     default:
+//       return 3;
+//   }
+// };
 
 // MegaMenu Component
 const MegaMenu: React.FC<MegaMenuProps> = ({ title, menuList }) => {
   const theme = useTheme();
 
-  // Chakra UI color mode sensitive hover styles
   const hoverColor = useColorModeValue("gray.100", "gray.700");
 
   return (

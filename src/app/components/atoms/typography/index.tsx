@@ -1,13 +1,12 @@
-import { Box } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 import clsx from "clsx";
 
-interface TypographyProps {
+interface TypographyProps extends BoxProps {
   children: React.ReactNode;
   className?: string;
   ellipsis?: boolean;
   textTransform?: "none" | "capitalize" | "uppercase" | "lowercase";
   as?: keyof JSX.IntrinsicElements;
-  [key: string]: any;
 }
 
 const StyledBox = ({

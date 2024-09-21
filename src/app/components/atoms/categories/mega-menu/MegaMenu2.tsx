@@ -3,29 +3,27 @@ import StyledMegaMenu from "./StyledMegaMenu";
 import { Box } from "@chakra-ui/react";
 import CategoryMenuItem from "../CategoryMenuItem";
 
+interface CategoryChild {
+  id: number;
+  name: string;
+  href: string;
+  icon?: ReactNode;
+  child?: CategoryChild[];
+}
+
 interface MegaMenu2Props {
-  data: {
-    id: number;
-    name: string;
-    href: string;
-    icon?: ReactNode;
-    child?: {
-      id: number;
-      name: string;
-      href: string;
-      icon?: ReactNode;
-      child?: any[];
-    }[];
-  }[];
+  data: CategoryChild[];
 }
 
 const MegaMenu2 = ({ data }: MegaMenu2Props) => {
   useEffect(() => {
     const bigCategoryContentHeight = document.getElementById('big_category_content')?.offsetHeight;
 
-    const categorySubMenuTags = document.querySelectorAll('#mini_category_menu > #categorySubMenu');
-    for (let i = 0; i < categorySubMenuTags.length; i++) {
-      categorySubMenuTags[i].setAttribute("style", `height: ${bigCategoryContentHeight}px; overflow: auto`);
+    const categorySubMenuTags = document.querySelectorAll<HTMLDivElement>('#mini_category_menu > #categorySubMenu');
+    if (bigCategoryContentHeight) {
+      for (let i = 0; i < categorySubMenuTags.length; i++) {
+        categorySubMenuTags[i].setAttribute("style", `height: ${bigCategoryContentHeight}px; overflow: auto`);
+      }
     }
   }, []);
 
@@ -45,7 +43,7 @@ const MegaMenu2 = ({ data }: MegaMenu2Props) => {
               icon={item.icon}
               key={item.id}
               title={item.name}
-              caret={item.child && item.child.length > 0}
+              caret={!!item.child?.length} // Checks if the item has children
             >
               {item.child && (
                 <StyledMegaMenu>
@@ -56,13 +54,13 @@ const MegaMenu2 = ({ data }: MegaMenu2Props) => {
                     py="0.5rem"
                     borderRadius="md"
                   >
-                    {item.child?.map((childItem) => (
+                    {item.child.map((childItem) => (
                       <CategoryMenuItem
                         href={childItem.href}
                         icon={childItem.icon}
                         key={childItem.id}
                         title={childItem.name}
-                        caret={childItem.child && childItem.child.length > 0}
+                        caret={!!childItem.child?.length} // Recursive check for child elements
                       />
                     ))}
                   </Box>

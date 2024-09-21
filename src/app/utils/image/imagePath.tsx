@@ -1,0 +1,1 @@
+export const footerLogo = "/images/uba_logo_white.png"
