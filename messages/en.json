@@ -1,6 +1,10 @@
 {
-    "Index": {
-        "Title": "Orchid",
-        "Search": "Search"
-    }
+  "Index": {
+    "Title": "Orchid",
+    "Search": "Search",
+    "Categories": "Categories",
+    "DiscountProducts": "Discount Products",
+    "NewProducts": "New Products",
+    "Home": "Home"
+  }
 }

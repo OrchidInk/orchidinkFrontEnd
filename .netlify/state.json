@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Ulan Bator",
+			"country": {
+				"code": "MN",
+				"name": "Mongolia"
+			},
+			"subdivision": {
+				"code": "1",
+				"name": "Ulaanbaatar Hot"
+			},
+			"timezone": "Asia/Ulaanbaatar",
+			"latitude": 47.9094,
+			"longitude": 106.8819
+		},
+		"timestamp": 1726945879276
+	}
+}

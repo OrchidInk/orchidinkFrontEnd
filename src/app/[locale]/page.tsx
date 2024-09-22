@@ -1,7 +1,7 @@
-import Body from "../components/Body/Body";
+import Body from "@/components/molecules/Body/Body";
 
 export default function Home() {
-   const locale = "mn";
+  const locale = "mn";
   return (
     <div>
       <Body locale={locale} />
