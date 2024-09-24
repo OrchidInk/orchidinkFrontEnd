@@ -40,7 +40,7 @@ const LoginPage = () => {
   return (
     <Flex minH="100vh" align="center" justify="center" bg={bgColor}>
       <Box w="40%" p={10} boxShadow="md" borderRadius="md" bg={cardBgColor}>
-        <Heading mb={6} color={textColor}>Super Admin Login</Heading>
+        <Heading mb={6} color={textColor}>Admin Login</Heading>
 
         <FormControl mb={4}>
           <FormLabel color={textColor}>Нэвтрэх нэр</FormLabel>
