@@ -1,12 +1,24 @@
-import React from 'react';
+'use client';
+import { Providers } from '@/provider';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      router.push('/admin/auth/login');
+    }
+  }, [router]);
+
   return (
-    <div>
-      <nav>
-        {/* Navigation specific to admin */}
-      </nav>
-      <main>{children}</main>
-    </div>
+    <html>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
   );
 }

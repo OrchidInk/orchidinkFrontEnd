@@ -1,5 +1,5 @@
-import NavbarLayout from '@/components/molecules/Navbar/layout';
 import React from 'react';
+import NavbarLayout from '../Navbar/layout';
 
 interface BodyProps {
   locale: string;

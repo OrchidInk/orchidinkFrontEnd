@@ -1,4 +1,4 @@
-import Body from "@/components/molecules/Body/Body";
+import Body from "@/@core/components/Body";
 
 export default function Home() {
   const locale = "mn";

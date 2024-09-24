@@ -12,8 +12,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
-import Image from "@/components/atoms/Image"
-import { footerLogo } from '@/utils/image/imagePath';
+import { footerLogo } from '@/@core/utils/image/imagePath';
 
 
 interface IconItem {
@@ -60,7 +59,7 @@ const Footer: FC = () => {
         <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap={6}>
           <GridItem>
             <Link href="/" passHref>
-              <Image mb={4} height={120} src={footerLogo} alt="logo" />
+              <img height={120} src={footerLogo} alt="logo" />
             </Link>
             <Text mb={4} color="gray.500">
               Та и-мэйл хаягаа үлдээгээд шинэ бүтээгдэхүүний үйлчилгээ болон урамшууллын талаар мэдээлэл аваарай
