@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Box,
   Container,
@@ -12,8 +13,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
-import { footerLogo } from '@/@core/utils/image/imagePath';
-
+import { footerLogo } from '@/@core/utils/image/imagePath'; 
 
 interface IconItem {
   icon: React.ElementType;
@@ -59,7 +59,8 @@ const Footer: FC = () => {
         <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap={6}>
           <GridItem>
             <Link href="/" passHref>
-              <img height={120} src={footerLogo} alt="logo" />
+              {/* Use Next.js Image instead of img */}
+              <Image src={footerLogo} alt="logo" height={120} width={200} /> {/* Adjust width and height as needed */}
             </Link>
             <Text mb={4} color="gray.500">
               Та и-мэйл хаягаа үлдээгээд шинэ бүтээгдэхүүний үйлчилгээ болон урамшууллын талаар мэдээлэл аваарай

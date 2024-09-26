@@ -1,20 +1,9 @@
-'use client';
-
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import AdminLayout from "@/@core/components/admin/sidebar/layout";
 
 export default function AdminHomePage() {
-  const router = useRouter();
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-
-    router.push('/admin/auth/login');
-  };
-
   return (
-    <div>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <AdminLayout>
+      <h1>Welcome to Admin Dashboard</h1>
+    </AdminLayout>
   );
 }

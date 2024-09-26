@@ -10,7 +10,6 @@ const intlMiddleware = createMiddleware({
 function adminMiddleware(req: NextRequest) {
   const token = req.cookies.get('token')?.value;
 
-  // Prevent redirect loop by skipping redirection on login page
   if (!token && !req.nextUrl.pathname.includes('/admin/auth/login')) {
     return NextResponse.redirect(new URL('/admin/auth/login', req.url));
   }
@@ -29,5 +28,9 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/(mn|en)/:path*', '/admin/:path*'],
+  matcher: [
+    '/(mn|en)/:path*',
+    '/',
+    '/admin/:path*',
+  ],
 };

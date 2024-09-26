@@ -16,10 +16,10 @@ const nextConfig = {
       },
       {
         source: '/user/:path*',
-        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/user/:path*`, 
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/user/:path*`,
       },
     ];
-  }
+  },
 };
 
 export default withNextIntl(nextConfig);
