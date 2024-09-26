@@ -58,7 +58,7 @@ const Sidebar = () => {
       {/* Sidebar Header */}
       <Box mb={6}>
         <Text fontSize="2xl" fontWeight="bold" color="teal.400">
-          LUNO Admin
+          Orchid Admin
         </Text>
       </Box>
 
