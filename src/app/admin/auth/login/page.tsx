@@ -7,6 +7,7 @@ import {
 import { FaCog } from 'react-icons/fa';
 import superAdminLogin from '@/@core/api/admins/superadmin/login/login';
 import { useRouter } from 'next/navigation';
+import { setCookie } from 'nookies'; // Install nookies if not already
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -14,24 +15,40 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const router = useRouter();
   
-  // For theme changing modal
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode, setColorMode } = useColorMode();
+  const {  setColorMode } = useColorMode();
   const bgColor = useColorModeValue('gray.50', 'gray.900');
   const cardBgColor = useColorModeValue('white', 'gray.800');
   const textColor = useColorModeValue('black', 'white');
 
-  const handleLogin = async () => {
-    try {
-      const data = await superAdminLogin(username, password);
+const handleLogin = async () => {
+  try {
+    const data = await superAdminLogin(username, password);
+    console.log('Response from API:', data);
 
-      localStorage.setItem('token', data.token);
+    if (data && data.token) {
+      // Set token in cookies instead of localStorage
+      setCookie(null, 'token', data.token, {
+        maxAge: 30 * 24 * 60 * 60, // Cookie expiry: 30 days
+        path: '/', // Available throughout the site
+      });
 
+      console.log('Token stored in cookies:', data.token);
+
+      // Redirect to /admin/home
       router.push('/admin/home');
-    } catch (error) {
+    } else {
       setError('Login failed, please check your credentials');
     }
-  };
+  } catch (error) {
+    console.error('Login error:', error);
+    setError('Login failed, please check your credentials');
+  }
+};
+
+
+
+
 
   const changeTheme = (theme: 'light' | 'dark') => {
     setColorMode(theme);
@@ -69,7 +86,6 @@ const LoginPage = () => {
         </Button>
       </Box>
 
-      {/* Settings Icon for theme changer */}
       <IconButton 
         icon={<FaCog />} 
         position="fixed" 
@@ -83,7 +99,6 @@ const LoginPage = () => {
         aria-label="Settings" 
       />
 
-      {/* Settings Modal for theme change */}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
