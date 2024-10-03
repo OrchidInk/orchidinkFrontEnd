@@ -1,9 +1,25 @@
 'use client'
-import { Box, Flex,  Text, Input, Select, IconButton, Badge } from '@chakra-ui/react';
+import { Box, Flex, Text, IconButton, Badge, Menu, MenuButton, MenuItem, MenuList, Button, MenuDivider, Input, Select, Divider } from '@chakra-ui/react';
+import { FiSearch, FiUser, FiShoppingCart, FiHeart, FiGlobe, FiChevronDown } from 'react-icons/fi';
 import { useTranslations } from 'next-intl';
-import { FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
 import { useState, useEffect } from 'react';
+import SearchBar from './SearchBar';
+import MenuBar from './MenuBar';
+import { FiGift } from 'react-icons/fi'; // Import any icon you want to use
 
+const menuItems = [
+  { label: 'BESTSELLERS', icon: FiGift },
+  { label: 'PROBLEM SOLVERS', icon: FiGift },
+  { label: 'SKIN', icon: FiGift },
+  { label: 'HAIR', icon: FiGift },
+  { label: 'BODY', icon: FiGift },
+  { label: 'SUN', icon: FiGift },
+  { label: 'MAKE-UP', icon: FiGift },
+  { label: 'WELLBEING', icon: FiGift },
+  { label: 'BABY & CHILD', icon: FiGift },
+  { label: 'MEN', icon: FiGift },
+  { label: 'OFFERS', icon: FiGift, isHighlighted: true },
+];
 
 const Header = () => {
   const t = useTranslations('Index');
@@ -24,6 +40,10 @@ const Header = () => {
     };
   }, []);
 
+  const changeLanguage = (newLocale: string) => {
+    // router.push(router.pathname, router.asPath, { locale: newLocale });
+  };
+
   return (
     <Box
       as="header"
@@ -43,45 +63,41 @@ const Header = () => {
         maxW="container.xl"
         mx="auto"
         px={4}
-        py={4}
+        pt={4}
       >
-        {/* Left side - Logo and Categories */}
+        {/* Left side - Logo and Menus */}
+        <Flex align="center">
+          {/* Logo */}
+          <SearchBar />
+        </Flex>
         <Flex align="center">
           {/* Logo */}
           <Box mr={6}>
-            <Text fontSize="2xl" fontWeight="bold" color="gray.800">orchid</Text>
+            <Text fontSize="2xl" fontWeight="bold" color="gray.800">Orchid</Text>
           </Box>
         </Flex>
 
-        {/* Center - Search bar */}
-        <Flex flex="1" maxW="500px" mx={4} bg="gray.50" borderRadius="md" align="center">
-          <IconButton
-            aria-label="Search"
-            icon={<FiSearch />}
-            bg="transparent"
-            _hover={{ bg: "transparent" }}
-            color="gray.500"
-          />
-          <Input
-            placeholder={t('Search')}
-            variant="unstyled"
-            px={2}
-            color="gray.800"
-          />
-          <Select variant="unstyled" maxW="150px" placeholder="All Categories" textColor="gray.600">
-            <option value="option1">Electronics</option>
-            <option value="option2">Fashion</option>
-            <option value="option3">Home Appliances</option>
-          </Select>
-        </Flex>
-
-        {/* Right side - Navigation and Icons */}
+        {/* Right side - Icons */}
         <Flex align="center">
-          {/* User and Cart Icons */}
           <Flex align="center" gap={4}>
+            {/* Language Switcher */}
+            <Menu>
+              <MenuButton as={IconButton} aria-label="Change language" icon={<FiGlobe />} variant="ghost" color="gray.600" _hover={{ color: 'gray.800' }} />
+              <MenuList>
+                <MenuItem onClick={() => changeLanguage('en')}>en</MenuItem>
+                <MenuItem onClick={() => changeLanguage('mn')}>mn</MenuItem>
+              </MenuList>
+            </Menu>
             <IconButton
               aria-label="User Account"
               icon={<FiUser />}
+              variant="ghost"
+              color="gray.600"
+              _hover={{ color: 'gray.800' }}
+            />
+            <IconButton
+              aria-label="Product liked"
+              icon={<FiHeart />}
               variant="ghost"
               color="gray.600"
               _hover={{ color: 'gray.800' }}
@@ -110,6 +126,9 @@ const Header = () => {
           </Flex>
         </Flex>
       </Flex>
+      <Divider orientation="horizontal" borderColor="gray.300" my={2} w="80%" mx="auto" />
+      <MenuBar items={menuItems} />
+      <Divider orientation="horizontal" borderColor="gray.300" my={2} mx="auto" />
     </Box>
   );
 };

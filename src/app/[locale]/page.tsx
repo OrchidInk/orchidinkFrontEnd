@@ -1,4 +1,4 @@
-import Body from "@/@core/components/Body";
+import Body from "@/@core/components/user/Body";
 
 export default function Home() {
   const locale = "mn";
