@@ -1,7 +1,9 @@
+"use client"
 import React, { ReactNode } from 'react';
 import { Box } from '@chakra-ui/react';
 import Header from './Header';
 import Footer from './Footer';
+import HeroSection from './Header/HeroSection';
 // import NavbarMenu from './NavbarMenu';
 
 interface NavbarLayoutProps {
@@ -21,6 +23,7 @@ const NavbarLayout: React.FC<NavbarLayoutProps> = ({ children }) => {
     <Box display="flex" flexDirection="column" minHeight="100vh">
       {/* Header at the top */}
       <Header />
+      <HeroSection />
 
       {/* NavbarMenu with required props */}
       {/* <NavbarMenu {...navbarProps} /> */}
